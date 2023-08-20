@@ -3,17 +3,28 @@ import { defineStore } from 'pinia'
 import { ITodo, ITodoList } from "@/interfaces/todo.interface";
 import router from "@/router";
 
+export function setTodos(todos: ITodoList[]) {
+  const data = JSON.stringify(todos);
+  window.localStorage.setItem('todoLists', data);
+}
+
 export const useTodoStore = defineStore('todo', {
   state: () => {
     return {
       todoLists: [],
-      todos: [],
       nextListId: 0,
       lastActionData: [],
       lastActionType: ''
     }
   },
   actions: {
+    getAll() {
+      const data = JSON.parse(window.localStorage.getItem('todoLists'));
+      const lastId = data[data.length - 1]?.id || 0;
+
+      this.todoLists = data;
+      this.nextListId = lastId + 1;
+    },
     addTodos(listId: number, todos: ITodo[]) {
       const todoList = this.todoLists.find((list: ITodoList) => list.id === listId);
       todoList.todos = todoList.todos.concat(todos);
