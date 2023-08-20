@@ -23,7 +23,7 @@ export const useTodoStore = defineStore('todo', {
       const lastId = data[data?.length - 1]?.id || 0;
 
       this.todoLists = data;
-      this.nextListId = lastId + 1;
+      this.nextListId = (lastId || 0) + 1;
     },
     addTodos(listId: number, todos: ITodo[]) {
       const todoList = this.todoLists.find((list: ITodoList) => list.id === listId);
