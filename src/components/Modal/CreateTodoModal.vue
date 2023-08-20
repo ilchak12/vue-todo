@@ -1,7 +1,7 @@
 <template>
   <v-dialog
     transition="dialog-bottom-transition"
-    persistent=""
+    persistent
     width="600"
   >
     <v-card>
@@ -66,7 +66,6 @@
 import { reactive, ref } from "vue";
 import { useTodoStore } from "@/store/todo";
 import CreateTodo from "@/components/UI/CreateTodo.vue";
-import router from "@/router";
 
 const todoStore = useTodoStore();
 
@@ -106,7 +105,7 @@ const saveList = () => {
 	if (props.type === 'list') {
 		todoStore.addTodoList(todoList);
 	} else {
-		todoStore.addTodos(props.listId, todoList.todos);
+		todoStore.addTodos(props.listId, todoList?.todos);
 	}
 
     closeModal();

@@ -58,7 +58,7 @@ const todoStore = useTodoStore();
 const route = useRoute();
 
 const id = computed(() => route.params.id);
-let todo = ref({});
+let todo = ref(null);
 
 const confirmModalOpened = ref(false);
 const createTodoOpened = ref(false);

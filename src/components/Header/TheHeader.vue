@@ -32,10 +32,10 @@
         </v-btn>
       </v-list-item>
 
-      <v-list-item :link="true" :to="`/list/${item.id}`"  v-for="item in listItems" :key="item.title">
+      <v-list-item :link="true"  v-for="item in listItems" :to="`/list/${item?.id}`" :key="item?.title">
         <v-list-item-title class="d-flex flex-row menu-item-title">
           <v-icon>mdi-note-text</v-icon>
-          <p>{{ item.title }}</p>
+          <p>{{ item?.title }}</p>
         </v-list-item-title>
       </v-list-item>
     </v-list>

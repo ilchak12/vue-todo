@@ -1,7 +1,7 @@
 <template>
 	<v-dialog
 		transition="dialog-bottom-transition"
-		persistent=""
+		persistent
 		width="600"
 	>
 		<v-card>

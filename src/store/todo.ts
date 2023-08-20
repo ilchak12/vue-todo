@@ -14,7 +14,7 @@ export const useTodoStore = defineStore('todo', {
     }
   },
   actions: {
-    addTodos(listId: number, todos: ITodo) {
+    addTodos(listId: number, todos: ITodo[]) {
       const todoList = this.todoLists.find((list: ITodoList) => list.id === listId);
       todoList.todos = todoList.todos.concat(todos);
 
@@ -36,8 +36,8 @@ export const useTodoStore = defineStore('todo', {
       this.lastActionType = 'delete';
     },
     deleteTodoList(id: number) {
-      const todoList = this.todoLists.find((item: ITodo) => item.id === id);
-      const todoListIndex = this.todoLists.findIndex((item: ITodo) => item.id === id);
+      const todoList = this.todoLists.find((item: ITodoList) => item?.id === id);
+      const todoListIndex = this.todoLists.findIndex((item: ITodoList) => item?.id === id);
       this.todoLists.splice(todoListIndex, 1);
 
       this.lastActionData = [{...todoList, index: todoListIndex}];
