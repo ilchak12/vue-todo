@@ -20,7 +20,7 @@ export const useTodoStore = defineStore('todo', {
   actions: {
     getAll() {
       const data = JSON.parse(window.localStorage.getItem('todoLists'));
-      const lastId = data[data.length - 1]?.id || 0;
+      const lastId = data[data?.length - 1]?.id || 0;
 
       this.todoLists = data;
       this.nextListId = lastId + 1;
